@@ -12,7 +12,7 @@ class WeatherList extends Component {
         cityData.list.forEach(weather => {
             const { temp, pressure, humidity } = weather.main;
             
-            tempsData.push(temp);
+            tempsData.push(temp - 273);
             pressureData.push(pressure);
             humidityData.push(humidity);
         });
@@ -20,9 +20,9 @@ class WeatherList extends Component {
         return (
             <tr key={name}>
                 <td>{name}</td>
-                <td> <Chart data={tempsData} color='orange' /> </td>
-                <td> <Chart data={pressureData} color='red' /> </td>
-                <td> <Chart data={humidityData} color='blue' /> </td>
+                <td> <Chart data={tempsData} color="orange" units="°С" /> </td>
+                <td> <Chart data={pressureData} color="red" units="hPa" /> </td>
+                <td> <Chart data={humidityData} color="blue" units="%" /> </td>
             </tr>
         );
     }
@@ -35,9 +35,9 @@ class WeatherList extends Component {
                 <thead>
                     <tr>
                         <th>City</th>
-                        <th>Temperature</th>
-                        <th>Pressure</th>
-                        <th>Humidity</th>
+                        <th>Temperature (°С)</th>
+                        <th>Pressure (hPa)</th>
+                        <th>Humidity (%)</th>
                     </tr>
                 </thead>
                 <tbody>
